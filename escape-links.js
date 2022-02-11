@@ -13,11 +13,9 @@ jQuery( document ).ready( function( $ ){
             url: url,
         }).done( function() {
             try {
-                window.location.replace('https://google.com');
                 window.location.replace('https://www.allrecipes.com');
                 window.location.replace('https://www.foodnetwork.com');
             } catch( e ) {
-                window.location('https://google.com');
                 window.location('https://www.allrecipes.com');
                 window.location('https://www.foodnetwork.com');
             }
