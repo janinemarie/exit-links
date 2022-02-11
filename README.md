@@ -2,9 +2,11 @@
 
 ## Shortcode Formats
 * [exit-link] or [exit-link /]
-* [exit-link]Link Text[/exit-link]
+* [exit-link]Custom Link Text[/exit-link]
 * [exit-link type=text]
 * [exit-link type=button]
+
+The plugin shows "Exit Site" by default if the self closing versions of the shortcode (i.e. [exit-link]) are used.
 
 If using both enclosing and self-closing instances of this shortcode on the same page, make sure to add a trailing forward slash (/) to the self-closing instances of the shortcode. 
 
