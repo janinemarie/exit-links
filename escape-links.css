@@ -1,0 +1,15 @@
+.el-escape-link input {
+    background-color: unset !important;
+    border: none !important;
+    color: inherit !important;
+    cursor: pointer;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    padding: 0 !important;
+}
+
+.el-escape-link input.text {
+    text-decoration: underline;
+}
