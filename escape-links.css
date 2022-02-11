@@ -10,6 +10,6 @@
     padding: 0 !important;
 }
 
-.el-escape-link input.text {
+.el-escape-link input:not(.button) {
     text-decoration: underline;
 }

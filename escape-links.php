@@ -25,63 +25,67 @@ function el_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'el_scripts' );
 
-/** 
+/**
  * Add shortcode and handler for exit links
- * 
+ *
  * Recognized formats:
  * [exit-link] or [exit-link /]
  * [exit-link]Link Text[/exit-link]
  * [exit-link type=text]
  * [exit-link type=button]
- * 
- * If using both enclosing and self-closing instances of this 
- * shortcode on the same page, make sure to add a trailing forward 
- * slash (/) to the self-closing instances of the shortcode. 
- * 
- * The WordPress shortcode parser does not handle the mixing of 
- * enclosing and non-enclosing forms of the same shortcode and 
+ *
+ * If using both enclosing and self-closing instances of this
+ * shortcode on the same page, make sure to add a trailing forward
+ * slash (/) to the self-closing instances of the shortcode.
+ *
+ * The WordPress shortcode parser does not handle the mixing of
+ * enclosing and non-enclosing forms of the same shortcode and
  * you will not get the results you want.
- * 
+ *
  * https://developer.wordpress.org/plugins/shortcodes/enclosing-shortcodes/#limitations
  *
  * @param array  $atts    Shortcode attributes. Default empty.
  * @return string Shortcode output.
  */
 
-
-
 function el_exit_shortcode( $atts = array(), $content = null ) {
-    $onclick = 'window.open(\'http://weather.com\');';
-    
+
     // parse the args
     $atts = array_change_key_case( ( array ) $atts, CASE_LOWER ); // normalize attribute keys, lowercase
     $link_format = shortcode_atts( array(
         'type' => '',
     ), $atts );
-    
+
     // parse the content
     if ( $content == null ) {
         $content = 'Exit Site';
     }
-    
+
+    // set up the onclick link that opens in a new tab
+    $onclick = 'window.open(\'https://weather.com\');';
+
+    // set up the html elements
     $title = 'Quick Site Exit Link';
     $html = '';
     $html .= '<form method="POST" action="" class="el-escape-link">';
     $html .= '<input class="';
-    
+
+    // check the shortcode type
     switch ( $link_format['type'] ) {
         case '':
         case 'text':
             $html .= 'text';
-        break;
+            break;
         case 'button':
             $html .= 'button';
-        break;
+            break;
     }
+
+    // close the html tags
     $html .= '" name="el_exit" type="submit" value="' . $content . '" title="' . $title . '" onclick="' . $onclick . '">';
     $html .= '</form>';
-    
-    return $html; // return the assembled link
+
+    return $html; // return the assembled html
 }
 
 
